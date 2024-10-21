@@ -2,10 +2,22 @@
   "name": "jsm-backend-js",
   "version": "1.0.0",
   "description": "Backend of Milestone App",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
+    "start:watch": "nodemon ./src/app.ts",
+    "start": "npx ts-node ./src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/mysql": "^2.15.26",
+    "typescript": "^5.6.3"
+  }
 }
