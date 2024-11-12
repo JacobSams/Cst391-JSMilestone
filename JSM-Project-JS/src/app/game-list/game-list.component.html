@@ -1,0 +1,16 @@
+<div class="d-flex flex-row justify-content-center h-100">
+  <div class="flex-fill">
+    <div class="container text-center fs-1 fw-bolder">Video Games</div>
+    <div class="container flex-column">
+      <button class="btn rounded w-100 fs-4 shadow border-1"
+        (click)="selectVideogame(game)"
+        *ngFor="let game of Videogames()">
+        {{game.Title}}
+      </button>
+    </div>
+  </div>
+  <div class="rounded shadow bg-black text-white w-33"
+    *ngIf="selectedVideogame">
+    <app-game-details [videogame]="selectedVideogame"/>
+  </div>
+</div>
