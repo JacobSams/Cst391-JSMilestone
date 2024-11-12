@@ -8,6 +8,11 @@ export const readvideogames = async () => {
 return execute<Videogame[]>(vgQueries.readVideogames, []);
 }
 
+//Find Videogame
+export const findVideogame = async (vgId: number) => {
+return execute<Videogame[]>(vgQueries.findVideogame, [vgId])
+}
+
 //Create
 export const createVideogame = async (vg: Videogame) => {
 return execute<OkPacket>(vgQueries.createVideogame,
@@ -27,7 +32,8 @@ export const deleteVideogame = async (vgId: number) => {
 return execute<OkPacket>(vgQueries.deleteVideogame, [vgId]);
 }
 
-//Get by id
+/*Get by id
 export function readvideogamesById(vgId: number): any {
     throw new Error('Function not implemented.');
 }
+    */

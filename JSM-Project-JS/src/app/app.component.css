@@ -1,0 +1,10 @@
+.navbar-brand{
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+button{
+  font-size: 1.5rem;
+}
+button:hover{
+  font-size: 1.75rem;
+}

@@ -6,13 +6,13 @@ import { OkPacket } from 'mysql';
 export const getVideoGames: RequestHandler = async (req: Request, res: Response) => {
   try {
     let videogames;
-    let vgId = parseInt(req.query.vgId as string);
+    let id = parseInt(req.query.vgId as string);
 
-    console.log('vgId', vgId);
-    if (Number.isNaN(vgId)) {
+    console.log('vgId', id);
+    if (Number.isNaN(id)) {
       videogames = await vgDao.readvideogames();
     } else {
-      videogames = await vgDao.readvideogamesById(vgId);
+      videogames = await vgDao.findVideogame(id);
     }
 
     res.status(200).json(videogames);
@@ -25,7 +25,7 @@ export const getVideoGames: RequestHandler = async (req: Request, res: Response)
 };
 
 export const createVideogame: RequestHandler = async (req: Request, res: Response) => {
-    console.log(req.body);
+    console.log('body:',req.body);
     try{
         const packet: OkPacket = await vgDao.createVideogame(req.body);
         console.log('req.body',req.body);

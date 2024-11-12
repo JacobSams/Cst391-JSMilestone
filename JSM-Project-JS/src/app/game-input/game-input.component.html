@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="fs-1 fw-bold text-center">Details</div>
+  <div class="fs-3 text-center" *ngIf="isEditing()">Editing</div>
+  <form (ngSubmit)="onSubmit()" #createForm="ngForm">
+    <div class="form-group">
+      <label for="Title">Title</label>
+      <input id="Title" type="text" class="form-control" placeholder="Enter the Title" required [(ngModel)]="Videogame().Title" name="Title">
+    </div>
+    <div class="form-group">
+      <label for="Developer">Developer</label>
+      <input id="Developer" type="text" class="form-control" placeholder="Enter the Developer" required [(ngModel)]="Videogame().Developer" name="Developer">
+    </div>
+    <div class="form-group">
+      <label for="Price">Price</label>
+      <input id="Price" type="number" class="form-control" required [(ngModel)]="Videogame().Price" name="Price">
+    </div>
+    <div class="form-group">
+      <label for="Rating">Rating</label>
+      <input id="Rating" type="text" class="form-control" placeholder="Enter the Rating (E, E10, T, M, AO)" required [(ngModel)]="Videogame().Rating" name="Rating">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <button class="btn btn-danger" *ngIf="isEditing()" (click)="deletePrompt()" [disabled]="deleteClicked">Delete</button>
+</div>
+
+<div class="container bg-dark-subtle text-center" *ngIf="deleteClicked">
+  <div class="fs-2">You're about to PERMANENTLY delete this entry</div>
+  <div class="d-flex flex-row justify-content-around">
+    <button class="fs-4 fw-bold btn btn-danger" (click)="deleteVideogame()">DELETE</button>
+    <button class="fs-5 btn btn-info" (click)="deletePrompt()">cancel</button>
+  </div>
+</div>
