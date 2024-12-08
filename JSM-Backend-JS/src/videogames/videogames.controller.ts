@@ -40,6 +40,8 @@ export const createVideogame: RequestHandler = async (req: Request, res: Respons
 
 export const updateVideogame: RequestHandler = async (req: Request, res: Response) =>{
     try{
+        console.log("Updating Entry...")
+        console.log(req.body)
         const packet: OkPacket = await vgDao.updateVideogame(req.body);
 
         res.status(200).json(packet);

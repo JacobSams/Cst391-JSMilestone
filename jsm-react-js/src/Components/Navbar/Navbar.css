@@ -1,0 +1,13 @@
+nav{
+    font-size: 2rem;
+    *{color:#fff;}
+}
+a{
+    text-decoration: none;
+}
+.navbar{
+    padding: 1rem 1rem;
+    .my-span{
+        font-weight: bolder;
+    }
+}

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { GameDAOService } from '../../services/game-dao.service';
 import { Videogame } from '../models/videogames.model';
 import { GameDetailsComponent } from "../game-details/game-details.component";
+import { MobileDetectionService } from '../../services/mobile-detection';
 
 @Component({
   selector: 'app-game-list',
@@ -12,9 +13,13 @@ import { GameDetailsComponent } from "../game-details/game-details.component";
   styleUrl: './game-list.component.css'
 })
 export class GameListComponent implements OnInit{
-  private videogames!: Videogame[];
+  private static videogames: Videogame[];
   selectedVideogame: Videogame |null=null;
-  constructor(private service: GameDAOService, private changeDetectorRef: ChangeDetectorRef){}
+  isMobile!:boolean;
+
+  constructor(private service: GameDAOService, private mobileDetector: MobileDetectionService, private changeDetectorRef: ChangeDetectorRef){
+    this.mobileDetector.isMobile.subscribe(bool => this.isMobile=bool);
+  }
 
   ngOnInit(): void {
     this.getData()
@@ -22,7 +27,7 @@ export class GameListComponent implements OnInit{
 
   private getData():void{
     this.service.getVideogames((games:Videogame[])=>{
-      this.videogames=games;
+      GameListComponent.videogames=games;
     })
   }
 
@@ -35,5 +40,5 @@ export class GameListComponent implements OnInit{
     else{this.selectedVideogame = null}
   }
 
-  Videogames(): Videogame[]{return this.videogames}
+  Videogames(): Videogame[]{return GameListComponent.videogames}
 }
